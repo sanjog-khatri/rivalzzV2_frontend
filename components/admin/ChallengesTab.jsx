@@ -102,7 +102,7 @@ export default function ChallengesTab({ onCountChange }) {
                     {c.acceptor?.username}
                   </div>
                 ) : (
-                  <span className="text-muted-foreground/40">Awaiting</span>
+                  <span className="text-muted-foreground/60">Awaiting</span>
                 )}
               </Td>
               <Td>

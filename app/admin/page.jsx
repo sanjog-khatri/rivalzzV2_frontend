@@ -82,7 +82,7 @@ export default function AdminPage() {
           {/* Main content */}
           <main className="flex-1 overflow-auto p-6 md:p-8">
             {/* Breadcrumb */}
-            <div className="mb-8 flex items-center gap-2 text-[10px] font-mono text-muted-foreground/40 uppercase tracking-widest">
+            <div className="mb-8 flex items-center gap-2 text-[10px] font-mono text-muted-foreground/60 uppercase tracking-widest">
               <span>admin</span>
               <span>/</span>
               <span className="text-muted-foreground/70">{activeTab}</span>

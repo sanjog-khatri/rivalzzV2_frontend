@@ -9,7 +9,7 @@ export function Section({ title, subtitle, action, children }) {
     <div className="flex flex-col gap-5">
       <div className="flex items-start justify-between gap-4">
         <div>
-          <p className="text-[9px] uppercase tracking-[0.35em] text-muted-foreground/40 font-mono mb-1">
+          <p className="text-[9px] uppercase tracking-[0.35em] text-muted-foreground/60 font-mono mb-1">
             // {subtitle || title}
           </p>
           <h2 className="text-xl font-mono font-bold tracking-tight">{title}</h2>
@@ -29,7 +29,7 @@ export function StatCard({ label, value, sub }) {
         {label}
       </p>
       <p className="text-2xl font-mono font-bold">{value ?? "—"}</p>
-      {sub && <p className="text-[10px] text-muted-foreground/40 mt-0.5">{sub}</p>}
+      {sub && <p className="text-[10px] text-muted-foreground/60 mt-0.5">{sub}</p>}
     </div>
   );
 }
@@ -40,7 +40,7 @@ export function Table({ cols, children, loading }) {
     <div className="border border-border/60 overflow-auto">
       <table className="w-full text-xs font-mono">
         <thead>
-          <tr className="border-b border-border/40 bg-foreground/[0.03]">
+          <tr className="border-b border-border/60 bg-foreground/[0.03]">
             {cols.map((c) => (
               <th
                 key={c}
@@ -54,7 +54,7 @@ export function Table({ cols, children, loading }) {
         <tbody>
           {loading ? (
             <tr>
-              <td colSpan={cols.length} className="py-12 text-center text-muted-foreground/40">
+              <td colSpan={cols.length} className="py-12 text-center text-muted-foreground/60">
                 <Loader2 size={14} className="animate-spin inline-block" />
               </td>
             </tr>
@@ -112,7 +112,7 @@ export function StatusBadge({ status }) {
 // ── Empty state ──────────────────────────────────────────
 export function Empty({ message = "No records found" }) {
   return (
-    <div className="py-16 text-center border border-border/40 border-dashed">
+    <div className="py-16 text-center border border-border/60 border-dashed">
       <p className="text-[10px] uppercase tracking-widest text-muted-foreground/30 font-mono">
         {message}
       </p>

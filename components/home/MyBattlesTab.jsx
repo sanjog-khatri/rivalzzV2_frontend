@@ -6,7 +6,7 @@ import { SectionHeader, PageLoader, Empty, StatusChip, EloChip } from "./UI";
 import { HeartCrack, Trophy, TrophyIcon } from "lucide-react";
 
 const API = process.env.NEXT_PUBLIC_API_URL;
-const VOTE_THRESHOLD = 10;
+const VOTE_THRESHOLD = 30;
 
 // Helper for authenticated requests
 const authHeader = () => ({
@@ -98,7 +98,7 @@ function MyBattleCard({ challenge: initialChallenge, currentUserId, onCompleted 
               YOUR IMAGE
             </div>
           )}
-          <span className="text-[9px] font-mono text-muted-foreground/40 uppercase tracking-wider">You</span>
+          <span className="text-[9px] font-mono text-muted-foreground/60 uppercase tracking-wider">You</span>
         </div>
 
         <div className="p-3 flex flex-col items-center gap-1.5">
@@ -109,7 +109,7 @@ function MyBattleCard({ challenge: initialChallenge, currentUserId, onCompleted 
               AWAITING
             </div>
           )}
-          <span className="text-[9px] font-mono text-muted-foreground/40 uppercase tracking-wider truncate max-w-full">
+          <span className="text-[9px] font-mono text-muted-foreground/60 uppercase tracking-wider truncate max-w-full">
             {them?.username ?? "—"}
           </span>
         </div>
@@ -201,7 +201,7 @@ export default function MyBattlesTab({ currentUserId }) {
             onClick={() => setFilter(f)}
             className={`text-[9px] font-mono uppercase tracking-widest px-3 py-1.5 border transition-colors ${filter === f
                 ? "border-foreground bg-foreground text-background"
-                : "border-border/50 text-muted-foreground hover:border-foreground/40"
+                : "border-border/50 text-muted-foreground hover:border-foreground/60"
               }`}
           >
             {f} {f === "all" ? `(${challenges.length})` : `(${challenges.filter(c => c.status === f).length})`}

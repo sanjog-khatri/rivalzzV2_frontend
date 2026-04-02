@@ -19,7 +19,7 @@ export function GridOverlay() {
 export function PageLoader() {
   return (
     <div className="flex items-center justify-center py-24">
-      <Loader2 size={16} className="animate-spin text-muted-foreground/40" />
+      <Loader2 size={16} className="animate-spin text-muted-foreground/60" />
     </div>
   );
 }
@@ -40,7 +40,7 @@ export function Empty({ message = "Nothing here yet", sub }) {
 export function SectionHeader({ eyebrow, title }) {
   return (
     <div className="mb-6">
-      <p className="text-[9px] uppercase tracking-[0.35em] text-muted-foreground/40 font-mono mb-1">
+      <p className="text-[9px] uppercase tracking-[0.35em] text-muted-foreground/60 font-mono mb-1">
         // {eyebrow}
       </p>
       <h2 className="text-xl font-mono font-bold tracking-tight">{title}</h2>

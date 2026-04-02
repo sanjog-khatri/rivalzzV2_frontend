@@ -111,7 +111,7 @@ export default function LeaderboardTab({ currentUserId }) {
               "flex items-center gap-1.5 text-[9px] font-mono uppercase tracking-widest px-4 py-2 border transition-colors",
               mode === id
                 ? "border-foreground bg-foreground text-background"
-                : "border-border/50 text-muted-foreground hover:border-foreground/40"
+                : "border-border/50 text-muted-foreground hover:border-foreground/60"
             )}
           >
             <Icon size={10} />
@@ -154,7 +154,7 @@ export default function LeaderboardTab({ currentUserId }) {
                   {u.username}
                   {isMe(u._id) && <span className="ml-2 text-[9px] text-muted-foreground/50">(you)</span>}
                 </p>
-                <p className="text-[9px] text-muted-foreground/40 font-mono">{u.faction?.name ?? "No Faction"}</p>
+                <p className="text-[9px] text-muted-foreground/60 font-mono">{u.faction?.name ?? "No Faction"}</p>
               </div>
 
               <EloChip rating={u.rating} />
@@ -187,14 +187,14 @@ export default function LeaderboardTab({ currentUserId }) {
 
               <div className="flex-1 min-w-0">
                 <p className="text-sm font-mono font-bold truncate">{f.name}</p>
-                <p className="text-[9px] text-muted-foreground/40 font-mono line-clamp-2">
+                <p className="text-[9px] text-muted-foreground/60 font-mono line-clamp-2">
                   {f.description || "No description"}
                 </p>
               </div>
 
               <div className="text-right">
                 <EloChip rating={f.totalRating} />
-                <p className="text-[9px] text-muted-foreground/40 mt-0.5">Total Rating</p>
+                <p className="text-[9px] text-muted-foreground/60 mt-0.5">Total Rating</p>
               </div>
             </div>
           ))}

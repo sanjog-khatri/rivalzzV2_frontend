@@ -158,7 +158,7 @@ function SignupForm({ onSwitch }) {
           required
           value={form.username}
           onChange={(e) => setForm((f) => ({ ...f, username: e.target.value }))}
-          className="bg-transparent border-border/60 focus-visible:border-foreground rounded-none h-10 placeholder:text-muted-foreground/40 transition-colors"
+          className="bg-transparent border-border/60 focus-visible:border-foreground rounded-none h-10 placeholder:text-muted-foreground/60 transition-colors"
         />
       </div>
 
@@ -174,7 +174,7 @@ function SignupForm({ onSwitch }) {
           required
           value={form.email}
           onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
-          className="bg-transparent border-border/60 focus-visible:border-foreground rounded-none h-10 placeholder:text-muted-foreground/40 transition-colors"
+          className="bg-transparent border-border/60 focus-visible:border-foreground rounded-none h-10 placeholder:text-muted-foreground/60 transition-colors"
         />
       </div>
 
@@ -191,7 +191,7 @@ function SignupForm({ onSwitch }) {
             required
             value={form.password}
             onChange={(e) => setForm((f) => ({ ...f, password: e.target.value }))}
-            className="bg-transparent border-border/60 focus-visible:border-foreground rounded-none h-10 pr-10 placeholder:text-muted-foreground/40 transition-colors"
+            className="bg-transparent border-border/60 focus-visible:border-foreground rounded-none h-10 pr-10 placeholder:text-muted-foreground/60 transition-colors"
           />
           <button
             type="button"
@@ -258,14 +258,14 @@ export default function SignupPage() {
         @keyframes glitch-1 {
           0%,100% { clip-path: inset(0 0 98% 0); transform: translate(-2px, 0); }
           20% { clip-path: inset(30% 0 50% 0); transform: translate(2px, 0); }
-          40% { clip-path: inset(70% 0 10% 0); transform: translate(-1px, 0); }
+          60% { clip-path: inset(70% 0 10% 0); transform: translate(-1px, 0); }
           60% { clip-path: inset(10% 0 80% 0); transform: translate(1px, 0); }
           80% { clip-path: inset(55% 0 30% 0); transform: translate(-2px, 0); }
         }
         @keyframes glitch-2 {
           0%,100% { clip-path: inset(98% 0 0 0); transform: translate(2px, 0); }
           20% { clip-path: inset(5% 0 60% 0); transform: translate(-2px, 0); }
-          40% { clip-path: inset(50% 0 20% 0); transform: translate(1px, 0); }
+          60% { clip-path: inset(50% 0 20% 0); transform: translate(1px, 0); }
           60% { clip-path: inset(80% 0 5% 0); transform: translate(-1px, 0); }
           80% { clip-path: inset(20% 0 70% 0); transform: translate(2px, 0); }
         }
@@ -290,7 +290,7 @@ export default function SignupPage() {
         <Scanlines />
 
         {/* Top bar */}
-        <header className="relative z-10 flex items-center justify-between border-b border-border/40 px-6 py-3">
+        <header className="relative z-10 flex items-center justify-between border-b border-border/60 px-6 py-3">
           <div className="flex items-center gap-3">
             <div className="h-5 w-5 bg-foreground" />
             <span className="text-xs uppercase tracking-[0.2em] font-mono">
@@ -311,7 +311,7 @@ export default function SignupPage() {
             {Array.from({ length: 2 }).map((_, i) => (
               <span
                 key={i}
-                className="text-[10px] tracking-[0.25em] uppercase text-muted-foreground/40 mr-8"
+                className="text-[10px] tracking-[0.25em] uppercase text-muted-foreground/60 mr-8"
               >
                 {[
                   "Rivalz Battle Arena",
@@ -352,7 +352,7 @@ export default function SignupPage() {
             </div>
 
             {/* Footer note */}
-            <p className="mt-6 text-center text-[10px] text-muted-foreground/40 tracking-wider animate-fade-up-delay-2">
+            <p className="mt-6 text-center text-[10px] text-muted-foreground/60 tracking-wider animate-fade-up-delay-2">
               Starting ELO · <span className="text-muted-foreground/60">1200</span>
               {" "}·{" "}
               Faction assigned on first battle

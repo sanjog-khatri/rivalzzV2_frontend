@@ -12,6 +12,7 @@ const API = process.env.NEXT_PUBLIC_API_URL;
 
 const authHeader = () => ({
   Authorization: `Bearer ${typeof window !== "undefined" ? localStorage.getItem("token") : ""}`,
+  "Content-Type": "application/json",   
 });
 
 const multipartHeader = () => ({
@@ -60,7 +61,7 @@ export default function ProfileModal({ open, onClose, user: initialUser, onProfi
     setEditPreview(URL.createObjectURL(file));
   };
 
-  // Save profile (username + image)
+  // Save profile
   const saveProfile = async () => {
     setSaving(true);
     const formData = new FormData();
@@ -82,20 +83,14 @@ export default function ProfileModal({ open, onClose, user: initialUser, onProfi
       const data = await res.json();
       if (!res.ok) throw new Error(data.message || "Failed to update profile");
 
-      // Update local state
       const updatedUser = {
         ...user,
-        username: data.user.username,
-        profileImage: data.user.profileImage,
+        username: data.user?.username || user.username,
+        profileImage: data.user?.profileImage || user.profileImage,
       };
       setUser(updatedUser);
-
-      // Notify parent and trigger full refresh
       onProfileUpdate?.(updatedUser);
-      
-      // Refresh the whole page to ensure everything is up-to-date
       window.location.reload();
-
     } catch (err) {
       console.error(err);
       alert(err.message || "Failed to update profile");
@@ -104,7 +99,6 @@ export default function ProfileModal({ open, onClose, user: initialUser, onProfi
     }
   };
 
-  // Join Faction → Close modal + Refresh page
   const joinFaction = async (id) => {
     setLoading(true);
     try {
@@ -112,17 +106,16 @@ export default function ProfileModal({ open, onClose, user: initialUser, onProfi
         method: "POST",
         headers: authHeader(),
       });
-
       onClose();
-      window.location.reload();   // Full refresh after joining
+      window.location.reload();
     } catch (err) {
       console.error(err);
+      alert("Failed to join faction");
     } finally {
       setLoading(false);
     }
   };
 
-  // Leave Faction → Close modal + Refresh page
   const leaveFaction = async () => {
     setLoading(true);
     try {
@@ -130,26 +123,39 @@ export default function ProfileModal({ open, onClose, user: initialUser, onProfi
         method: "POST",
         headers: authHeader(),
       });
-
       onClose();
-      window.location.reload();   // Full refresh after leaving
+      window.location.reload();
     } catch (err) {
       console.error(err);
+      alert("Failed to leave faction");
     } finally {
       setLoading(false);
     }
   };
 
+  // FIXED UNBLOCK FUNCTION
   const unblock = async (userId) => {
+    if (!userId) return;
+
     try {
-      await fetch(`${API}/api/user/unblock`, {
+      const res = await fetch(`${API}/api/user/unblock`, {
         method: "POST",
         headers: authHeader(),
         body: JSON.stringify({ userId }),
       });
-      setBlocked((b) => b.filter((x) => x.blocked?._id !== userId));
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.message || "Failed to unblock user");
+      }
+
+      // Remove from local list
+      setBlocked((prev) => prev.filter((item) => item.blocked?._id !== userId));
+      
     } catch (err) {
       console.error(err);
+      alert(err.message || "Failed to unblock user");
     }
   };
 
@@ -188,7 +194,7 @@ export default function ProfileModal({ open, onClose, user: initialUser, onProfi
           <div className="flex items-center gap-2 mt-1.5">
             <EloChip rating={user?.rating ?? 1200} />
             {user?.faction?.name && (
-              <span className="text-[9px] font-mono text-muted-foreground/50 border border-border/40 px-1.5 py-0.5 flex items-center gap-1">
+              <span className="text-[9px] font-mono text-muted-foreground/50 border border-border/60 px-1.5 py-0.5 flex items-center gap-1">
                 <Shield size={9} />
                 {user.faction.name}
               </span>
@@ -236,7 +242,7 @@ export default function ProfileModal({ open, onClose, user: initialUser, onProfi
         </div>
       )}
 
-      {/* Image Upload when Editing */}
+      {/* Image Upload */}
       {isEditing && (
         <div className="mb-4">
           <Label className="text-[9px] font-mono uppercase tracking-widest text-muted-foreground/60 mb-1 block">
@@ -266,7 +272,7 @@ export default function ProfileModal({ open, onClose, user: initialUser, onProfi
               "text-[9px] font-mono uppercase tracking-widest px-3 py-1.5 border transition-colors",
               tab === t
                 ? "border-foreground bg-foreground text-background"
-                : "border-border/40 text-muted-foreground hover:border-foreground/30"
+                : "border-border/60 text-muted-foreground hover:border-foreground/30"
             )}
           >
             {t}
@@ -283,8 +289,8 @@ export default function ProfileModal({ open, onClose, user: initialUser, onProfi
             { label: "Faction", value: user?.faction?.name ?? "None" },
             { label: "Role", value: user?.role ?? "user" },
           ].map(({ label, value }) => (
-            <div key={label} className="border border-border/40 bg-card/30 p-3 rounded-lg">
-              <p className="text-[9px] uppercase tracking-widest text-muted-foreground/40 font-mono mb-1">{label}</p>
+            <div key={label} className="border border-border/60 bg-card/30 p-3 rounded-lg">
+              <p className="text-[9px] uppercase tracking-widest text-muted-foreground/60 font-mono mb-1">{label}</p>
               <p className="text-sm font-mono font-bold">{value}</p>
             </div>
           ))}
@@ -297,7 +303,7 @@ export default function ProfileModal({ open, onClose, user: initialUser, onProfi
             <button
               onClick={leaveFaction}
               disabled={loading}
-              className="flex items-center gap-2 px-3 py-2 text-[10px] font-mono text-destructive/70 hover:text-destructive border border-destructive/20 hover:border-destructive/40 transition-colors rounded-lg"
+              className="flex items-center gap-2 px-3 py-2 text-[10px] font-mono text-destructive/70 hover:text-destructive border border-destructive/20 hover:border-destructive/60 transition-colors rounded-lg"
             >
               <X size={10} /> Leave current faction
             </button>
@@ -312,12 +318,12 @@ export default function ProfileModal({ open, onClose, user: initialUser, onProfi
                 "flex items-center justify-between px-3 py-2.5 border transition-colors text-left rounded-lg",
                 user?.faction?._id === f._id
                   ? "border-foreground/30 bg-foreground/5 text-muted-foreground cursor-default"
-                  : "border-border/40 hover:border-foreground/40 hover:bg-foreground/5"
+                  : "border-border/60 hover:border-foreground/60 hover:bg-foreground/5"
               )}
             >
               <div>
                 <p className="text-xs font-mono font-bold">{f.name}</p>
-                <p className="text-[9px] text-muted-foreground/40 font-mono">{f.description?.slice(0, 50) || "—"}</p>
+                <p className="text-[9px] text-muted-foreground/60 font-mono">{f.description?.slice(0, 50) || "—"}</p>
               </div>
               <EloChip rating={f.totalRating} />
             </button>
@@ -335,7 +341,11 @@ export default function ProfileModal({ open, onClose, user: initialUser, onProfi
             blocked.map((b) => (
               <div key={b._id} className="flex items-center gap-3 border border-border/30 px-3 py-2 rounded-lg">
                 {b.blocked?.profileImage ? (
-                  <img src={`${API}${b.blocked.profileImage}`} className="h-6 w-6 object-cover rounded-full" alt="" />
+                  <img 
+                    src={`${API}${b.blocked.profileImage}`} 
+                    className="h-6 w-6 object-cover rounded-full" 
+                    alt="" 
+                  />
                 ) : (
                   <div className="h-6 w-6 bg-foreground/10 flex items-center justify-center text-[9px] font-mono rounded-full">
                     {b.blocked?.username?.[0]?.toUpperCase()}
@@ -344,7 +354,7 @@ export default function ProfileModal({ open, onClose, user: initialUser, onProfi
                 <span className="text-xs font-mono flex-1">{b.blocked?.username}</span>
                 <button
                   onClick={() => unblock(b.blocked?._id)}
-                  className="text-[9px] font-mono text-muted-foreground/40 hover:text-muted-foreground flex items-center gap-1 transition-colors"
+                  className="text-[9px] font-mono text-muted-foreground/60 hover:text-muted-foreground flex items-center gap-1 transition-colors"
                 >
                   <UserMinus size={10} /> Unblock
                 </button>

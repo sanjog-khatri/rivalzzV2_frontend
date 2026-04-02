@@ -31,7 +31,7 @@ export default function UserSidebar({
   onLogout,
 }) {
   return (
-    <aside className="relative flex w-56 shrink-0 flex-col border-r border-border/40 bg-card/20 min-h-full">
+    <aside className="relative flex w-56 shrink-0 flex-col border-r border-border/60 bg-card/20 min-h-full">
       {/* Brand */}
       <div className="flex items-center gap-2.5 border-b border-border/30 px-5 py-4">
         <div className="h-4 w-4 bg-foreground shrink-0" />
@@ -66,7 +66,7 @@ export default function UserSidebar({
                 <p className="text-xs font-mono uppercase tracking-wider leading-none">{label}</p>
                 <p className={cn(
                   "text-[9px] mt-0.5 font-mono truncate",
-                  active ? "text-background/50" : "text-muted-foreground/40"
+                  active ? "text-background/50" : "text-muted-foreground/60"
                 )}>
                   {sub}
                 </p>
@@ -114,7 +114,7 @@ export default function UserSidebar({
 
         <button
           onClick={onLogout}
-          className="flex w-full items-center gap-2 px-3 py-1.5 text-[10px] font-mono text-muted-foreground/40 hover:text-muted-foreground transition-colors uppercase tracking-widest"
+          className="flex w-full items-center gap-2 px-3 py-1.5 text-[10px] font-mono text-muted-foreground/60 hover:text-muted-foreground transition-colors uppercase tracking-widest"
         >
           <LogOut size={10} />
           Logout

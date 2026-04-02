@@ -23,7 +23,7 @@ export default function AdminSidebar({ activeTab, setActiveTab, counts = {} }) {
     <aside className="w-56 shrink-0 border-r border-border/40 min-h-full bg-card/30">
       {/* Section header */}
       <div className="px-4 pt-6 pb-3">
-        <p className="text-[9px] uppercase tracking-[0.35em] text-muted-foreground/40 font-mono">
+        <p className="text-[9px] uppercase tracking-[0.35em] text-muted-foreground/60 font-mono">
           // Modules
         </p>
       </div>

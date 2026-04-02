@@ -111,7 +111,7 @@ function LoginForm({ onSwitch }) {
           required
           value={form.email}
           onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
-          className="bg-transparent border-border/60 focus-visible:border-foreground rounded-none h-10 placeholder:text-muted-foreground/40"
+          className="bg-transparent border-border/60 focus-visible:border-foreground rounded-none h-10 placeholder:text-muted-foreground/60"
         />
       </div>
 
@@ -128,7 +128,7 @@ function LoginForm({ onSwitch }) {
             required
             value={form.password}
             onChange={(e) => setForm((f) => ({ ...f, password: e.target.value }))}
-            className="bg-transparent border-border/60 focus-visible:border-foreground rounded-none h-10 pr-10 placeholder:text-muted-foreground/40"
+            className="bg-transparent border-border/60 focus-visible:border-foreground rounded-none h-10 pr-10 placeholder:text-muted-foreground/60"
           />
           <button
             type="button"
@@ -194,7 +194,7 @@ export default function LoginPage() {
         <Scanlines />
 
         {/* Top bar */}
-        <header className="relative z-10 flex items-center justify-between border-b border-border/40 px-6 py-3">
+        <header className="relative z-10 flex items-center justify-between border-b border-border/60 px-6 py-3">
           <div className="flex items-center gap-3">
             <div className="h-5 w-5 bg-foreground" />
             <span className="text-xs uppercase tracking-[0.2em] font-mono">
@@ -212,7 +212,7 @@ export default function LoginPage() {
             {Array.from({ length: 2 }).map((_, i) => (
               <span
                 key={i}
-                className="text-[10px] tracking-[0.25em] uppercase text-muted-foreground/40 mr-8"
+                className="text-[10px] tracking-[0.25em] uppercase text-muted-foreground/60 mr-8"
               >
                 {[
                   "RivalZ Battle Arena",
@@ -250,7 +250,7 @@ export default function LoginPage() {
               <LoginForm onSwitch={() => router.push("/auth/signup")} />
             </div>
 
-            <p className="mt-6 text-center text-[10px] text-muted-foreground/40 tracking-wider animate-fade-up-delay-2">
+            <p className="mt-6 text-center text-[10px] text-muted-foreground/60 tracking-wider animate-fade-up-delay-2">
               Starting ELO · <span className="text-muted-foreground/60">1200</span> · Faction assigned on first battle
             </p>
           </div>
