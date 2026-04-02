@@ -9,8 +9,7 @@ import ReportsTab from "@/components/admin/ReportsTab";
 import UsersTab from "@/components/admin/UsersTab";
 import { useState } from "react";
 
-
-// ── Scanlines / grid (same as auth page for consistency) ──
+// ── Scanlines / grid  ──
 function GridOverlay() {
   return (
     <div

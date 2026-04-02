@@ -154,7 +154,7 @@ export function BattleCard({ challenge: initialChallenge, currentUserId, onVoted
             {localChallenge.challengerImage ? (
               <img
                 src={`${API}${localChallenge.challengerImage}`}
-                className="w-full h-full object-contain"   // Changed to object-contain for full image
+                className="w-full h-full object-contain" 
                 alt="Challenger"
               />
             ) : (
@@ -191,7 +191,7 @@ export function BattleCard({ challenge: initialChallenge, currentUserId, onVoted
             {localChallenge.acceptorImage ? (
               <img
                 src={`${API}${localChallenge.acceptorImage}`}
-                className="w-full h-full object-contain"   // Changed to object-contain
+                className="w-full h-full object-contain"   
                 alt="Acceptor"
               />
             ) : (
@@ -329,12 +329,12 @@ export function QuestCard({ challenge, onAccepted }) {
         </div>
       </div>
 
-      {/* Challenge Image - Much Larger & Better Aspect */}
+      {/* Challenge Image */}
       <div className="relative aspect-[16/10] bg-black/90 overflow-hidden">
         {challenge.challengerImage ? (
           <img
             src={`${API}${challenge.challengerImage}`}
-            className="w-full h-full object-contain"   // Changed to object-contain for full image visibility
+            className="w-full h-full object-contain"   
             alt="Challenge"
           />
         ) : (

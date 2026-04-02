@@ -9,7 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { useRouter } from "next/navigation";
 
 // ─────────────────────────────────────────────────────────
-// Shared helpers (same as login)
+// Shared helpers 
 // ─────────────────────────────────────────────────────────
 const GLITCH_CHARS = "█▓▒░";
 

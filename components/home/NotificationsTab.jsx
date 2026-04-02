@@ -17,7 +17,7 @@ const TYPE_ICON = {
   challenge_accepted: Swords,
   challenge_completed: Trophy,
   new_vote: Vote,
-  warning: AlertTriangle,        // ← Added for admin warnings
+  warning: AlertTriangle,        
 };
 
 function NotifCard({ notif, onRead }) {

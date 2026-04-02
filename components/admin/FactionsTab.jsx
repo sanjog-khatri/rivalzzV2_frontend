@@ -87,7 +87,7 @@ export default function FactionsTab({ onCountChange }) {
       if (editing) {
         await fetch(`${API}/api/admin/factions/${editing._id}`, {
           method: "PUT",
-          headers: { Authorization: authHeader().Authorization }, // No Content-Type for FormData
+          headers: { Authorization: authHeader().Authorization },
           body: fd,
         });
       } else {

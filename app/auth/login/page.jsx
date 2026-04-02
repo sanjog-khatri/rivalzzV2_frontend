@@ -9,7 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { useRouter } from "next/navigation";
 
 // ─────────────────────────────────────────────────────────
-// Shared helpers (unchanged)
+// Shared helpers
 // ─────────────────────────────────────────────────────────
 function GlitchText({ text, className = "" }) {
   return (
@@ -78,7 +78,7 @@ function LoginForm({ onSwitch }) {
 
       // === CRITICAL: Save token AND userId ===
       localStorage.setItem("token", data.token);
-      localStorage.setItem("userId", data.user.id);     // ← This was missing
+      localStorage.setItem("userId", data.user.id);     
 
       // Optional: Save full user data
       localStorage.setItem("user", JSON.stringify(data.user));
@@ -87,7 +87,7 @@ function LoginForm({ onSwitch }) {
       if (data.user.role === "admin") {
         router.push("/admin");
       } else {
-        router.push("/home");        // or "/dashboard"
+        router.push("/home");        
       }
 
     } catch (err) {

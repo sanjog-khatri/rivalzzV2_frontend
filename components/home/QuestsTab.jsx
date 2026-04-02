@@ -15,7 +15,7 @@ const authHeader = () => ({
 export default function QuestsTab() {
   const [challenges, setChallenges] = useState([]);
   const [categories, setCategories] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState("all"); // "all" or category _id
+  const [selectedCategory, setSelectedCategory] = useState("all"); 
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
 
