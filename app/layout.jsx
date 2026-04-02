@@ -20,7 +20,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Challenge Battle",
+  title: "Rivalz Battle",
   description: "Battle with images and votes",
 };
 

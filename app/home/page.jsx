@@ -113,7 +113,7 @@ export default function HomePage() {
             <span className="h-px w-5 bg-foreground" />
             <span className="h-px w-3 bg-foreground" />
           </button>
-          <span className="text-xs font-mono uppercase tracking-[0.2em]">Challenge Battle</span>
+          <span className="text-xs font-mono uppercase tracking-[0.2em]">Rivalz Battle</span>
           <button
             onClick={() => setProfileOpen(true)}
             className="h-7 w-7 overflow-hidden"

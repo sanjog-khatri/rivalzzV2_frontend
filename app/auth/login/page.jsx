@@ -107,7 +107,7 @@ function LoginForm({ onSwitch }) {
           id="login-email"
           type="email"
           autoComplete="email"
-          placeholder="challenger@arena.io"
+          placeholder="challenger@rivalz.io"
           required
           value={form.email}
           onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
@@ -198,7 +198,7 @@ export default function LoginPage() {
           <div className="flex items-center gap-3">
             <div className="h-5 w-5 bg-foreground" />
             <span className="text-xs uppercase tracking-[0.2em] font-mono">
-              Challenge Battle
+              RivalZ Battle
             </span>
           </div>
           <Badge variant="outline" className="rounded-none text-[10px] tracking-widest uppercase font-mono">
@@ -215,7 +215,7 @@ export default function LoginPage() {
                 className="text-[10px] tracking-[0.25em] uppercase text-muted-foreground/40 mr-8"
               >
                 {[
-                  "Challenge Battle Arena",
+                  "RivalZ Battle Arena",
                   "⬛",
                   "Live Voting System",
                   "⬛",

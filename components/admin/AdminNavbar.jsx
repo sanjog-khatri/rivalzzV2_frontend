@@ -12,7 +12,7 @@ export default function AdminNavbar({ activeTab }) {
         <div className="flex items-center gap-3">
           <div className="h-5 w-5 bg-foreground" />
           <span className="text-xs uppercase tracking-[0.2em] font-mono">
-            Challenge Battle
+            Rivalz Battle
           </span>
           <span className="text-muted-foreground/30 text-xs">/</span>
           <Badge

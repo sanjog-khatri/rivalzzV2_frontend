@@ -170,7 +170,7 @@ function SignupForm({ onSwitch }) {
         <Input
           id="su-email"
           type="email"
-          placeholder="challenger@arena.io"
+          placeholder="challenger@rivalz.io"
           required
           value={form.email}
           onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
@@ -294,7 +294,7 @@ export default function SignupPage() {
           <div className="flex items-center gap-3">
             <div className="h-5 w-5 bg-foreground" />
             <span className="text-xs uppercase tracking-[0.2em] font-mono">
-              Challenge Battle
+              Rivalz Battle
             </span>
           </div>
           <Badge
@@ -314,7 +314,7 @@ export default function SignupPage() {
                 className="text-[10px] tracking-[0.25em] uppercase text-muted-foreground/40 mr-8"
               >
                 {[
-                  "Challenge Battle Arena",
+                  "Rivalz Battle Arena",
                   "⬛",
                   "Live Voting System",
                   "⬛",
