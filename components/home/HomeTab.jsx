@@ -4,8 +4,11 @@ import { useEffect, useState } from "react";
 import { useSocket } from "@/components/providers/SocketProvider";
 import { SectionHeader, PageLoader, Empty } from "./UI";
 import { BattleCard } from "./BattleCard";
+import { Button } from "@/components/ui/button";
+import { RefreshCw } from "lucide-react";
 
 const API = process.env.NEXT_PUBLIC_API_URL;
+
 const authHeader = () => ({
   Authorization: `Bearer ${typeof window !== "undefined" ? localStorage.getItem("token") : ""}`,
 });
@@ -14,9 +17,12 @@ export default function HomeTab({ currentUserId }) {
   const socket = useSocket();
   const [challenges, setChallenges] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
 
-  const load = async () => {
-    setLoading(true);
+  const load = async (isRefresh = false) => {
+    if (isRefresh) setRefreshing(true);
+    else setLoading(true);
+
     try {
       const res = await fetch(`${API}/api/user/challenges/ongoing`, {
         headers: authHeader(),
@@ -27,6 +33,7 @@ export default function HomeTab({ currentUserId }) {
       console.error(err);
     } finally {
       setLoading(false);
+      setRefreshing(false);
     }
   };
 
@@ -68,9 +75,29 @@ export default function HomeTab({ currentUserId }) {
     };
   }, [socket]);
 
+  const handleRefresh = () => {
+    load(true);   // This will reshuffle because backend returns random order
+  };
+
   return (
     <div>
-      <SectionHeader eyebrow="Arena" title="Ongoing Battles" />
+      <div className="flex items-center justify-between mb-6">
+        <SectionHeader eyebrow="Arena" title="Ongoing Battles" />
+
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={handleRefresh}
+          disabled={refreshing}
+          className="gap-2 text-xs font-mono uppercase tracking-widest rounded-none h-8"
+        >
+          <RefreshCw 
+            size={14} 
+            className={refreshing ? "animate-spin" : ""} 
+          />
+          SHUFFLE
+        </Button>
+      </div>
 
       {loading ? (
         <PageLoader />
