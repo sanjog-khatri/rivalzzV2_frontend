@@ -187,15 +187,15 @@ export default function FactionsTab({ onCountChange }) {
           {/* Image Upload */}
           <div>
             <Label className="text-[10px] uppercase tracking-widest text-muted-foreground mb-2 block">
-              Faction Image (Optional)
+              Faction Image
             </Label>
-            <label className="group relative flex h-32 w-full cursor-pointer items-center justify-center border border-dashed border-border/60 hover:border-foreground transition-colors overflow-hidden rounded-lg">
+            <label className="group relative flex h-32 w-full cursor-pointer items-center justify-center border border-dashed border-border/60 hover:border-foreground transition-colors overflow-hidden">
               {preview ? (
                 <img src={preview} className="h-full w-full object-cover" alt="Preview" />
               ) : (
                 <div className="flex flex-col items-center gap-2 text-muted-foreground group-hover:text-foreground transition-colors">
                   <Upload size={24} />
-                  <span className="text-xs uppercase tracking-widest">Upload Image</span>
+                  <span className="text-xs uppercase tracking-widest">Faction Image</span>
                 </div>
               )}
               <input 

@@ -35,7 +35,7 @@ export default function RootLayout({ children }) {
         jetbrainsMono.variable
       )}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="h-full overflow-hidden">   {/* Changed from min-h-full flex flex-col */}
         <SocketProvider>
           {children}
         </SocketProvider>

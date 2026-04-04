@@ -38,7 +38,7 @@ export default function HomePage() {
       .catch(() => {});
   }, []);
 
-  // Also load unread count
+  // Load unread count
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) return;
@@ -74,7 +74,7 @@ export default function HomePage() {
         .tab-fade { animation: fade-in-up 0.22s ease both; }
       `}</style>
 
-      <div className="relative min-h-screen bg-background flex overflow-hidden">
+      <div className="relative h-screen bg-background flex overflow-hidden">
         <GridOverlay />
 
         {/* Sidebar */}
@@ -128,7 +128,7 @@ export default function HomePage() {
           </button>
         </div>
 
-        {/* Main content */}
+        {/* Main content - Scrollable */}
         <main className="relative z-10 flex-1 overflow-auto pt-14 md:pt-0">
           <div className="p-6 md:p-8 max-w-5xl">
             {/* Breadcrumb */}
@@ -138,7 +138,7 @@ export default function HomePage() {
               <span className="text-muted-foreground/60">{activeTab.replace("-", " ")}</span>
             </div>
 
-            {/* Tab */}
+            {/* Tab Content */}
             <div key={activeTab} className="tab-fade">
               {TAB_MAP[activeTab]}
             </div>
@@ -152,7 +152,7 @@ export default function HomePage() {
           user={user}
         />
 
-        {/* Corner */}
+        {/* Corner text */}
         <span className="pointer-events-none fixed bottom-5 right-5 text-[9px] text-muted-foreground/15 tracking-widest font-mono hidden md:block">
           {"{USER_MODULE}"}
         </span>
