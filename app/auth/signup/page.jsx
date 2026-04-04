@@ -355,7 +355,7 @@ export default function SignupPage() {
             <p className="mt-6 text-center text-[10px] text-muted-foreground/60 tracking-wider animate-fade-up-delay-2">
               Starting ELO · <span className="text-muted-foreground/60">1200</span>
               {" "}·{" "}
-              Faction assigned on first battle
+              Battle & climb up the leaderboard
             </p>
           </div>
         </main>
